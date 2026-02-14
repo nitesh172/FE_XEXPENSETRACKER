@@ -20,11 +20,11 @@ export const AppProvider = ({ children }) => {
     Number(localStorage.getItem("walletBalance")) || 5000,
   )
   const [expenses, setExpenses] = useState(
-    Number(localStorage.getItem("expenses")) || 0,
+    Number(localStorage.getItem("expense")) || 0,
   )
 
   const [transactions, setTransactions] = useState(
-    JSON.parse(localStorage.getItem("transactions")) || [],
+    JSON.parse(localStorage.getItem("expenses")) || [],
   )
 
   const addBalance = (price) => {
