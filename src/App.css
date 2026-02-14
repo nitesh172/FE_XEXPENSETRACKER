@@ -1,0 +1,495 @@
+.App {
+  padding: 12px 16px;
+  display: grid;
+  grid-template-areas:
+    "tracker"
+    "recent"
+    "top";
+  column-gap: 20px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+.expense-section {
+  grid-area: tracker;
+}
+
+.recent-transactions {
+  grid-area: recent;
+}
+
+.top-expenses {
+  grid-area: top;
+}
+
+.expense-tracker-section {
+  background-color: #626262;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  padding: 32px 16px;
+}
+
+.expense-tracker {
+  background-color: #9b9b9b;
+  border-radius: 15px;
+  padding: 24px;
+  min-width: 355px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+}
+
+@media screen and (min-width: 769px) {
+  .App {
+    grid-template-areas:
+      "tracker tracker tracker tracker tracker tracker"
+      "recent recent recent recent top top";
+    padding: 12px 20px;
+  }
+
+  .expense-tracker-section {
+    background-color: #626262;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    padding: 46px 50px;
+  }
+
+  .expense-tracker {
+    height: 181px;
+  }
+}
+
+.expense-tracker-button {
+  border: none;
+  border-radius: 15px;
+  padding: 10px 32px;
+  color: #ffffff;
+  width: max-content;
+  cursor: pointer;
+  font-size: 16;
+}
+
+.button-add-income {
+  background: linear-gradient(90deg, #b5dc52 0%, #89e148 100%);
+}
+
+.button-add-expense {
+  background: linear-gradient(90deg, #ff9595 0%, #ff4747 80%, #ff3838 100%);
+}
+
+.wallet-balance {
+  color: #9dff5b;
+}
+
+.expense-balance {
+  color: #f4bb4a;
+}
+
+/* Recent Transactions List */
+
+.recent-transactions-section {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Each Row */
+
+.transaction-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 36px;
+  border-bottom: 1px solid #cfcfcf;
+}
+
+.transaction-row:last-child {
+  border-bottom: none;
+}
+
+/* Left Side */
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon {
+  width: 52px;
+  height: 52px;
+  background: #e0e0e0;
+  border-radius: 50%;
+  display: flex;
+  color: #000000;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 500;
+  color: #000;
+  margin: 0;
+}
+
+.date {
+  font-size: 15px;
+  color: #9a9a9a;
+  margin: 0;
+}
+
+/* Right Side */
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.amount {
+  font-size: 22px;
+  font-weight: 600;
+  color: #f4b23f;
+  margin-right: 10px;
+}
+
+/* Action Buttons */
+
+.btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+}
+
+.delete {
+  background: #ff3b3b;
+  color: #ffffff;
+}
+
+.edit {
+  background: #f4b23f;
+  color: #ffffff;
+}
+
+.top-expenses-section {
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  flex: 1;
+  padding: 100px 50px;
+}
+
+/* Top Expenses Bar Chart */
+
+.top-expenses-section {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 40px;
+}
+
+.expense-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.expense-label {
+  min-width: 120px;
+  font-size: 18px;
+  color: #000;
+}
+
+.bar-container {
+  flex: 1;
+  height: 26px;
+  background: #e5e5e5;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: #8a8ad8;
+  border-radius: 20px;
+  transition: width 0.4s ease;
+}
+
+/* Recent Transactions List */
+
+.recent-transactions-section {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 0;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0;
+}
+
+.transaction-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 36px;
+  border-bottom: 1px solid #cfcfcf;
+}
+
+.transaction-row:last-child {
+  border-bottom: none;
+}
+
+/* Left Side */
+
+.transaction-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.transaction-icon {
+  width: 52px;
+  height: 52px;
+  background: #e0e0e0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.transaction-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.transaction-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: #000;
+}
+
+.transaction-date {
+  font-size: 15px;
+  color: #9a9a9a;
+}
+
+/* Right Side */
+
+.transaction-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.transaction-amount {
+  font-size: 22px;
+  font-weight: 600;
+  color: #f4b23f;
+  margin-right: 10px;
+}
+
+/* Action Buttons */
+
+.transaction-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+}
+
+.transaction-delete {
+  background: #ff3b3b;
+  color: #000000;
+}
+
+.transaction-edit {
+  background: #f4b23f;
+  color: #000000;
+}
+
+/* Pagination */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 0 18px;
+}
+
+.pagination button {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  background: #f2f2f2;
+  font-size: 18px;
+  color: #000000;
+  cursor: pointer;
+}
+
+.pagination .active {
+  width: 46px;
+  height: 46px;
+  border-radius: 8px;
+  background: #3f8f6b;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.custom-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.77);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 32px;
+}
+
+.custom-modal {
+  background: #f3f3f3;
+  border-radius: 20px;
+  width: 520px;
+  max-width: 90%;
+  padding: 32px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* Title */
+
+.modal-title {
+  font-size: 28px;
+  color: #000;
+}
+
+/* Content Row */
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.btn-coantiner {
+  display: flex;
+  gap: 16px;
+  flex-direction: row;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+/* Input */
+
+.modal-input {
+  flex: 1;
+  min-height: 48px;
+  padding: 0 18px;
+  border-radius: 12px;
+  border: none;
+  font-size: 18px;
+  outline: none;
+  background: #ffffff;
+  appearance: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  width: 223px;
+}
+
+.modal-input::placeholder {
+  color: #9c9c9c;
+}
+
+/* Buttons */
+
+.modal-btn {
+  height: 48px;
+  padding: 0 22px;
+  border-radius: 14px;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.modal-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* Add Button */
+
+.modal-btn.add {
+  background: #f4b23f;
+  color: #ffffff;
+}
+
+/* Cancel Button */
+
+.modal-btn.cancel {
+  background: #e6e6e6;
+  color: #000000;
+}
+
+@media screen and (min-width: 769px) {
+  .modal-content {
+    flex-direction: row;
+  }
+}
