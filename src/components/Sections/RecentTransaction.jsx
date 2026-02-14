@@ -67,10 +67,10 @@ function RecentTransaction() {
                 </div>
 
                 <div className="right">
-                  <span className="amount">₹{item.amount}</span>
+                  <span className="price">₹{item.price}</span>
 
                   <button
-                    onClick={() => deleteExpense(item.id, item.amount)}
+                    onClick={() => deleteExpense(item.id, item.price)}
                     className="btn delete"
                   >
                     <RxCross1 />

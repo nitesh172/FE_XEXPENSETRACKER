@@ -27,32 +27,31 @@ export const AppProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("transactions")) || [],
   )
 
-  const addBalance = (amount) => {
-    setWalletBalance((prev) => prev + Number(amount))
-    localStorage.setItem("walletBalance", walletBalance + Number(amount))
+  const addBalance = (price) => {
+    setWalletBalance((prev) => prev + Number(price))
+    localStorage.setItem("walletBalance", walletBalance + Number(price))
   }
 
   const addExpense = (transaction) => {
-    if (walletBalance < transaction.amount) return alert("Insufficient Balance")
+    if (walletBalance < transaction.price) return alert("Insufficient Balance")
     setTransactions((prev) => [...prev, transaction])
-    setExpenses((prev) => prev + Number(transaction.amount))
-    setWalletBalance((prev) => prev - Number(transaction.amount))
+    setExpenses((prev) => prev + Number(transaction.price))
+    setWalletBalance((prev) => prev - Number(transaction.price))
     localStorage.setItem(
       "transactions",
       JSON.stringify([...transactions, transaction]),
     )
-    localStorage.setItem("expenses", expenses + Number(transaction.amount))
+    localStorage.setItem("expenses", expenses + Number(transaction.price))
     localStorage.setItem(
       "walletBalance",
-      walletBalance - Number(transaction.amount),
+      walletBalance - Number(transaction.price),
     )
   }
 
   const updateExpense = (transaction) => {
-    if (walletBalance < transaction.amount) return alert("Insufficient Balance")
+    if (walletBalance < transaction.price) return alert("Insufficient Balance")
     const oldTransaction = transactions.find((t) => t.id === transaction.id)
-    const amountDiff =
-      Number(transaction.amount) - Number(oldTransaction.amount)
+    const priceDiff = Number(transaction.price) - Number(oldTransaction.price)
 
     let updateTransaction = {
       ...oldTransaction,
@@ -64,31 +63,31 @@ export const AppProvider = ({ children }) => {
     )
 
     setTransactions(updatedTransactions)
-    setExpenses((prev) => prev + amountDiff)
-    setWalletBalance((prev) => prev - amountDiff)
+    setExpenses((prev) => prev + priceDiff)
+    setWalletBalance((prev) => prev - priceDiff)
 
     localStorage.setItem("transactions", JSON.stringify(updatedTransactions))
-    localStorage.setItem("expenses", expenses + amountDiff)
-    localStorage.setItem("walletBalance", walletBalance - amountDiff)
+    localStorage.setItem("expenses", expenses + priceDiff)
+    localStorage.setItem("walletBalance", walletBalance - priceDiff)
     setSelectedId("")
   }
 
-  const deleteExpense = (id, amount) => {
+  const deleteExpense = (id, price) => {
     setTransactions((prev) => prev.filter((item) => item.id !== id))
-    setExpenses((prev) => prev - Number(amount))
-    setWalletBalance((prev) => prev + Number(amount))
+    setExpenses((prev) => prev - Number(price))
+    setWalletBalance((prev) => prev + Number(price))
     localStorage.setItem(
       "transactions",
       JSON.stringify(transactions.filter((item) => item.id !== id)),
     )
-    localStorage.setItem("expenses", expenses - Number(amount))
-    localStorage.setItem("walletBalance", walletBalance + Number(amount))
+    localStorage.setItem("expenses", expenses - Number(price))
+    localStorage.setItem("walletBalance", walletBalance + Number(price))
   }
 
   const getCategoryPercentages = () => {
     const categoryTotals = transactions.reduce(
       (acc, curr) => {
-        acc[curr.category] = (acc[curr.category] || 0) + Number(curr.amount)
+        acc[curr.category] = (acc[curr.category] || 0) + Number(curr.price)
         return acc
       },
       { food: 0, entertainment: 0, travel: 0 },
@@ -101,7 +100,7 @@ export const AppProvider = ({ children }) => {
           expenses > 0
             ? Math.round((categoryTotals[category] / expenses) * 100)
             : 0,
-        amount: categoryTotals[category],
+        price: categoryTotals[category],
       }))
       .sort((a, b) => b.value - a.value)
   }

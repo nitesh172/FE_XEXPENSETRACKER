@@ -10,7 +10,7 @@ function AddExpense({ close }) {
     : {
         id: Math.random(),
         title: "",
-        amount: 0,
+        price: 0,
         category: "",
         date: new Date(),
       }
@@ -47,9 +47,9 @@ function AddExpense({ close }) {
             type="number"
             placeholder="Price"
             className="modal-input"
-            name="amount"
+            name="price"
             required
-            value={value.amount}
+            value={value.price}
             onChange={onChange}
           />
         </div>
