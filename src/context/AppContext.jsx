@@ -38,10 +38,10 @@ export const AppProvider = ({ children }) => {
     setExpenses((prev) => prev + Number(transaction.price))
     setWalletBalance((prev) => prev - Number(transaction.price))
     localStorage.setItem(
-      "transactions",
+      "expenses",
       JSON.stringify([...transactions, transaction]),
     )
-    localStorage.setItem("expenses", expenses + Number(transaction.price))
+    localStorage.setItem("expense", expenses + Number(transaction.price))
     localStorage.setItem(
       "walletBalance",
       walletBalance - Number(transaction.price),
@@ -66,8 +66,8 @@ export const AppProvider = ({ children }) => {
     setExpenses((prev) => prev + priceDiff)
     setWalletBalance((prev) => prev - priceDiff)
 
-    localStorage.setItem("transactions", JSON.stringify(updatedTransactions))
-    localStorage.setItem("expenses", expenses + priceDiff)
+    localStorage.setItem("expenses", JSON.stringify(updatedTransactions))
+    localStorage.setItem("expense", expenses + priceDiff)
     localStorage.setItem("walletBalance", walletBalance - priceDiff)
     setSelectedId("")
   }
@@ -77,10 +77,10 @@ export const AppProvider = ({ children }) => {
     setExpenses((prev) => prev - Number(price))
     setWalletBalance((prev) => prev + Number(price))
     localStorage.setItem(
-      "transactions",
+      "expenses",
       JSON.stringify(transactions.filter((item) => item.id !== id)),
     )
-    localStorage.setItem("expenses", expenses - Number(price))
+    localStorage.setItem("expense", expenses - Number(price))
     localStorage.setItem("walletBalance", walletBalance + Number(price))
   }
 
