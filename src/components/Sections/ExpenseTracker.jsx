@@ -96,6 +96,7 @@ function ExpenseTracker() {
       </div>
       <ReactModal
         isOpen={isOpenIncomeModal}
+        ariaHideApp={false}
         onRequestClose={incomeModalClose}
         className="custom-modal"
         overlayClassName="custom-overlay"
@@ -104,6 +105,7 @@ function ExpenseTracker() {
       </ReactModal>
       <ReactModal
         isOpen={isOpenExpenseModal}
+        ariaHideApp={false}
         onRequestClose={expenseModalClose}
         className="custom-modal"
         overlayClassName="custom-overlay"

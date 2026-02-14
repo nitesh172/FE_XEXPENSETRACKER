@@ -10,7 +10,7 @@ function AddExpense({ close }) {
     : {
         id: Math.random(),
         title: "",
-        amount: null,
+        amount: 0,
         category: "",
         date: new Date(),
       }
